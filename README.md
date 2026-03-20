@@ -18,14 +18,16 @@ Before building, you need to download three proprietary software packages and pl
 
 ### 1. Supermicro IPMIView
 
-Download from Supermicro and extract into the repo root:
+Download from Supermicro and place in the `ipmiview/` directory:
 
 ```bash
-wget https://www.supermicro.com/wdl/utility/IPMIView/Linux/IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64.tar.gz
-tar zxvf IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64.tar.gz
+wget -P ipmiview/ https://www.supermicro.com/wdl/utility/IPMIView/Linux/IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64.tar.gz
 ```
 
-This creates the `IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64/` directory in the repo root.
+```text
+ipmiview/
+└── IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64.tar.gz
+```
 
 ### 2. Raritan MPC
 
@@ -50,7 +52,7 @@ ATENJavaClient/
 ```bash
 git clone https://github.com/lordbink/ipmiview
 cd ipmiview
-# Place the three software packages as described above
+# Place the three software packages as described in Prerequisites above
 make
 make run
 ```

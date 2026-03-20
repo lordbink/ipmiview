@@ -9,8 +9,8 @@ ENV PATH=/opt/IPMIView/jre/bin:$PATH
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD fluxbox/menu /root/.fluxbox/menu
 
-# Supermicro IPMIView — extract tarball into IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64/ before building
-ADD IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64 /opt/IPMIView
+# Supermicro IPMIView — place IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64.tar.gz in ipmiview/
+ADD ipmiview/IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64.tar.gz /opt/
 
 # Raritan MPC — place Raritan-mpc-installer.MPC_7.0.3.5.60.zip in kxclient/
 ADD kxclient /opt/kxclient
@@ -33,6 +33,8 @@ RUN apt-get update && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
+
+RUN mv /opt/IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64 /opt/IPMIView
 
 RUN unzip /opt/ATENJavaClient/cn8000_iClientJ_v2.3.227.zip -d /opt/ATENJavaClient && \
 	rm /opt/ATENJavaClient/cn8000_iClientJ_v2.3.227.zip
