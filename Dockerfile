@@ -15,10 +15,8 @@ RUN apt-get update && \
 		x11vnc \
 		supervisor \
 		fluxbox \
-		git && \
-	git clone https://github.com/novnc/noVNC.git /opt/noVNC && \
-	git clone https://github.com/novnc/websockify /opt/noVNC/utils/websockify && \
-	apt-get remove --purge -y git && \
+		novnc \
+		python3-websockify && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /build /tmp/* /var/tmp/* /var/lib/apt/lists/*
