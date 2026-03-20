@@ -1,0 +1,9 @@
+[begin] (KVM Clients)
+  [exec] (IPMIView) {/opt/IPMIView/IPMIView20}
+  [exec] (Raritan MPC) {/opt/IPMIView/jre/bin/java -jar /opt/kxclient/mpc-installer.MPC_7.0.3.5.60.jar}
+  [exec] (ATEN iClientJ) {/opt/IPMIView/jre/bin/java -jar /opt/ATENJavaClient/iClientJ.jar}
+  [separator]
+  [exec] (Terminal) {xterm}
+  [separator]
+  [exit] (Exit Fluxbox)
+[end]
