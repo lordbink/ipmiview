@@ -42,7 +42,8 @@ RUN unzip /opt/kxclient/Raritan-mpc-installer.MPC_7.0.3.5.60.zip -d /opt/kxclien
 
 RUN java -Djava.awt.headless=true -jar /opt/kxclient/mpc-installer.MPC_7.0.3.5.60.jar /opt/kxclient/auto-install.xml || true
 RUN test -f /usr/local/raritan-mpc/start.sh && \
-	ln -s /usr/local/raritan-mpc/start.sh /usr/local/bin/raritan-mpc && \
+	printf '#!/bin/sh\ncd /usr/local/raritan-mpc && exec ./start.sh "$@"\n' > /usr/local/bin/raritan-mpc && \
+	chmod +x /usr/local/bin/raritan-mpc && \
 	rm -rf /opt/kxclient
 
 EXPOSE 8080
