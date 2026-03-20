@@ -40,7 +40,8 @@ RUN unzip /opt/ATENJavaClient/cn8000_iClientJ_v2.3.227.zip -d /opt/ATENJavaClien
 RUN unzip /opt/kxclient/Raritan-mpc-installer.MPC_7.0.3.5.60.zip -d /opt/kxclient && \
 	rm /opt/kxclient/Raritan-mpc-installer.MPC_7.0.3.5.60.zip
 
-RUN java -Djava.awt.headless=true -jar /opt/kxclient/mpc-installer.MPC_7.0.3.5.60.jar /opt/kxclient/auto-install.xml && \
+RUN java -Djava.awt.headless=true -jar /opt/kxclient/mpc-installer.MPC_7.0.3.5.60.jar /opt/kxclient/auto-install.xml || true
+RUN test -f /usr/local/raritan-mpc/start.sh && \
 	ln -s /usr/local/raritan-mpc/start.sh /usr/local/bin/raritan-mpc && \
 	rm -rf /opt/kxclient
 
