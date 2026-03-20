@@ -5,4 +5,7 @@ NAME = lordbink/ipmiview
 all: build
 
 build:
-	docker build --ulimit "nofile=1024:524288" -t $(NAME):latest --rm -f Dockerfile .
+	docker build --platform linux/amd64 --ulimit "nofile=1024:524288" -t $(NAME):latest --rm -f Dockerfile .
+
+run:
+	docker run --platform linux/amd64 -p 8080:8080 $(NAME):latest

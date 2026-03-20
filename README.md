@@ -17,7 +17,7 @@ cd ipmiview
 wget https://www.supermicro.com/wdl/utility/IPMIView/Linux/IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64.tar.gz
 tar zxvf IPMIView_2.21.0_build.221118_bundleJRE_Linux_x64.tar.gz
 make
-docker run -p 8080:8080 lordbink/ipmiview:latest
+make run
 ```
 
 Then open your browser with address `http://localhost:8080/vnc.html`.

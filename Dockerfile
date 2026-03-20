@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM --platform=linux/amd64 ubuntu:24.04
 LABEL maintainer="Tomas Jacik <tomas@jacik.cz>"
 
 ENV DEBIAN_FRONTEND=noninteractive
