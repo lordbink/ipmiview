@@ -34,8 +34,8 @@ RUN apt-get update && \
 	rm /opt/ATENJavaClient/cn8000_iClientJ_v2.3.227.zip && \
 	unzip /opt/kxclient/Raritan-mpc-installer.MPC_7.0.3.5.60.zip -d /opt/kxclient && \
 	rm /opt/kxclient/Raritan-mpc-installer.MPC_7.0.3.5.60.zip && \
-	printf '0\n\n1\n\n\n\n' | java -jar /opt/kxclient/mpc-installer.MPC_7.0.3.5.60.jar -console && \
-	ln -s "/usr/local/Raritan/Raritan Multi-Platform Client/7.0.3.5.60/start.sh" /usr/local/bin/raritan-mpc && \
+	java -jar /opt/kxclient/mpc-installer.MPC_7.0.3.5.60.jar /opt/kxclient/auto-install.xml && \
+	ln -s /usr/local/raritan-mpc/start.sh /usr/local/bin/raritan-mpc && \
 	rm -rf /opt/kxclient && \
 	apt-get autoremove -y && \
 	apt-get clean && \
