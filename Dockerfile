@@ -11,24 +11,14 @@ RUN apt-get update && \
 	apt-get dist-upgrade -y --no-install-recommends && \
 	apt-get install -y --no-install-recommends \
 		ca-certificates \
-		curl \
 		xvfb \
 		x11vnc \
 		supervisor \
 		fluxbox \
 		git && \
-	install -d -m 0755 /etc/apt/keyrings && \
-	curl -fsSL https://packages.mozilla.org/apt/repo-signing-key.gpg \
-		-o /etc/apt/keyrings/packages.mozilla.org.asc && \
-	echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" \
-		> /etc/apt/sources.list.d/mozilla.list && \
-	echo 'Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000' \
-		> /etc/apt/preferences.d/mozilla && \
-	apt-get update && \
-	apt-get install -y --no-install-recommends firefox-esr && \
 	git clone https://github.com/novnc/noVNC.git /opt/noVNC && \
 	git clone https://github.com/novnc/websockify /opt/noVNC/utils/websockify && \
-	apt-get remove --purge -y git curl && \
+	apt-get remove --purge -y git && \
 	apt-get autoremove -y && \
 	apt-get clean && \
 	rm -rf /build /tmp/* /var/tmp/* /var/lib/apt/lists/*
