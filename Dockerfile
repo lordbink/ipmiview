@@ -30,16 +30,19 @@ RUN apt-get update && \
 		novnc \
 		python3-websockify \
 		xterm && \
-	unzip /opt/ATENJavaClient/cn8000_iClientJ_v2.3.227.zip -d /opt/ATENJavaClient && \
-	rm /opt/ATENJavaClient/cn8000_iClientJ_v2.3.227.zip && \
-	unzip /opt/kxclient/Raritan-mpc-installer.MPC_7.0.3.5.60.zip -d /opt/kxclient && \
-	rm /opt/kxclient/Raritan-mpc-installer.MPC_7.0.3.5.60.zip && \
-	java -jar /opt/kxclient/mpc-installer.MPC_7.0.3.5.60.jar /opt/kxclient/auto-install.xml && \
-	ln -s /usr/local/raritan-mpc/start.sh /usr/local/bin/raritan-mpc && \
-	rm -rf /opt/kxclient && \
 	apt-get autoremove -y && \
 	apt-get clean && \
-	rm -rf /build /tmp/* /var/tmp/* /var/lib/apt/lists/*
+	rm -rf /var/lib/apt/lists/*
+
+RUN unzip /opt/ATENJavaClient/cn8000_iClientJ_v2.3.227.zip -d /opt/ATENJavaClient && \
+	rm /opt/ATENJavaClient/cn8000_iClientJ_v2.3.227.zip
+
+RUN unzip /opt/kxclient/Raritan-mpc-installer.MPC_7.0.3.5.60.zip -d /opt/kxclient && \
+	rm /opt/kxclient/Raritan-mpc-installer.MPC_7.0.3.5.60.zip
+
+RUN java -Djava.awt.headless=true -jar /opt/kxclient/mpc-installer.MPC_7.0.3.5.60.jar /opt/kxclient/auto-install.xml && \
+	ln -s /usr/local/raritan-mpc/start.sh /usr/local/bin/raritan-mpc && \
+	rm -rf /opt/kxclient
 
 EXPOSE 8080
 
