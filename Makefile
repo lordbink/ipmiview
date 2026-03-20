@@ -1,4 +1,4 @@
-NAME = sunfoxcz/ipmiview
+NAME = lordbink/ipmiview
 
 .PHONY: all build
 
